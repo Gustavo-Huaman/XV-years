@@ -1,0 +1,1350 @@
+/* =========================================================
+   INVITACIÓN XV AÑOS - ZAÍRA BELÉN
+   Estilos visuales con foto en carta de bienvenida
+   ========================================================= */
+
+:root{
+    --blush:#fbe9ee;
+    --blush-deep:#f6d6e0;
+    --cream:#fffaf6;
+    --rose:#b23a5c;
+    --rose-dark:#7a2740;
+    --gold:#b8912c;
+    --gold-soft:#e8d2a0;
+    --plum:#3a1b26;
+    --plum-soft:#6b4a56;
+
+    --font-display:'Cormorant Garamond',serif;
+    --font-script:'Tangerine',cursive;
+    --font-body:'Jost',sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--blush);
+    color:var(--plum);
+    font-family:var(--font-body);
+    font-weight:300;
+    overflow-x:hidden;
+}
+
+body.cover-active{
+    overflow:hidden;
+    height:100vh;
+}
+
+body.cover-active #mainContent{
+    visibility:hidden;
+}
+
+::selection{
+    background:var(--rose);
+    color:var(--cream);
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+button{
+    font-family:inherit;
+}
+
+.container{
+    width:min(1080px,100%);
+    margin:0 auto;
+    padding:0 32px;
+}
+
+/* =========================================================
+   PÉTALOS DE ROSA
+   ========================================================= */
+
+.petals{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:5;
+    overflow:hidden;
+}
+
+.petal{
+    position:absolute;
+    top:-8%;
+    width:10px;
+    height:10px;
+    background:var(--rose);
+    opacity:.25;
+    border-radius:0 70% 0 70%;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    0%{
+        transform:translate3d(0,-10vh,0) rotate(0deg);
+    }
+    50%{
+        transform:translate3d(35px,50vh,0) rotate(180deg);
+    }
+    100%{
+        transform:translate3d(-25px,115vh,0) rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+    .petal{
+        display:none;
+    }
+}
+
+/* =========================================================
+   1. PORTADA / CARTA DE BIENVENIDA
+   ========================================================= */
+
+.welcome-screen{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:
+        radial-gradient(circle at 12% 18%,rgba(232,210,160,.40),transparent 23%),
+        radial-gradient(circle at 88% 78%,rgba(178,58,92,.18),transparent 30%),
+        radial-gradient(circle at 50% 45%,rgba(255,255,255,.88),transparent 38%),
+        linear-gradient(135deg,#fffaf6 0%,#fbe9ee 45%,#f6d6e0 100%);
+    opacity:1;
+    visibility:visible;
+    transition:opacity .75s ease,visibility .75s ease;
+}
+
+.welcome-screen.opening{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.welcome-card{
+    position:relative;
+    width:min(92vw,470px);
+    padding:40px 30px 35px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background: 
+        radial-gradient(circle at 10% 10%, rgba(232, 210, 160, 0.25), transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(178, 58, 92, 0.15), transparent 40%),
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,250,246,.97) 55%, rgba(251,233,238,.96));
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    box-shadow: 
+        0 35px 80px rgba(122,39,64,.22),
+        0 8px 25px rgba(184,145,44,.15),
+        inset 0 0 20px rgba(184, 145, 44, 0.12);
+    cursor:pointer;
+    transform:translateY(0);
+    transition:transform .35s ease,box-shadow .35s ease;
+}
+
+.welcome-card:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 42px 95px rgba(122,39,64,.26),
+        0 12px 32px rgba(184,145,44,.20),
+        inset 0 0 25px rgba(184, 145, 44, 0.18);
+}
+
+.welcome-card::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px dashed var(--gold-soft);
+    border-radius: 8px;
+    pointer-events:none;
+}
+
+.card-corner{
+    position:absolute;
+    width:45px;
+    height:45px;
+    border-color:var(--gold);
+    border-style:solid;
+    z-index:2;
+}
+
+.card-corner.top-left{
+    top:20px;
+    left:20px;
+    border-width:1.5px 0 0 1.5px;
+}
+
+.card-corner.top-right{
+    top:20px;
+    right:20px;
+    border-width:1.5px 1.5px 0 0;
+}
+
+.card-corner.bottom-left{
+    bottom:20px;
+    left:20px;
+    border-width:0 0 1.5px 1.5px;
+}
+
+.card-corner.bottom-right{
+    bottom:20px;
+    right:20px;
+    border-width:0 1.5px 1.5px 0;
+}
+
+.welcome-tiara{
+    position:relative;
+    width:105px;
+    height:55px;
+    margin-bottom:8px;
+    color:var(--gold);
+    filter:drop-shadow(0 5px 7px rgba(184,145,44,.2));
+}
+
+.welcome-tiara:before,
+.welcome-tiara:after{
+    content:"";
+    position:absolute;
+    bottom:8px;
+    width:48px;
+    height:25px;
+    border-bottom:2px solid var(--gold);
+}
+
+.welcome-tiara:before{
+    left:3px;
+    transform:rotate(-10deg);
+}
+
+.welcome-tiara:after{
+    right:3px;
+    transform:rotate(10deg);
+}
+
+.tiara-arc{
+    position:absolute;
+    left:50%;
+    top:4px;
+    transform:translateX(-50%);
+    font-family:Georgia,serif;
+    font-size:66px;
+    line-height:35px;
+    color:var(--gold);
+    font-weight:300;
+}
+
+.tiara-gem{
+    position:absolute;
+    left:50%;
+    top:1px;
+    transform:translateX(-50%);
+    font-size:16px;
+    color:#f2d78a;
+    text-shadow:0 0 10px rgba(184,145,44,.45);
+    z-index:3;
+}
+
+.tiara-dot{
+    position:absolute;
+    bottom:7px;
+    font-size:18px;
+    color:var(--gold);
+}
+
+.dot-1{ left:23px; }
+.dot-2{ left:50%; transform:translateX(-50%); }
+.dot-3{ right:23px; }
+
+/* =========================================================
+   PANTALLA Y TARJETA DE BIENVENIDA (SIN MARCOS EN NINGUNA PANTALLA)
+   ========================================================= */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blush);
+    padding: 20px;
+}
+/* TARJETA CONTENEDORA LIMPIA */
+.welcome-card {
+    position: relative;
+    width: min(92vw, 650px);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    transform: translateY(0);
+    transition: transform .35s ease;
+}
+
+.welcome-card:hover {
+    transform: scale(1.015);
+}
+
+/* DESACTIVAR BORDES/LÍNEAS INTERNAS Y ESQUINAS */
+.welcome-card::before,
+.card-corner {
+    display: none !important;
+}
+
+/* CONTENEDOR Y FOTO LIMPIA */
+.welcome-photo-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    height: 520px;
+    margin: 0 0 15px;
+    border-radius: 18px;
+    overflow: hidden;
+    /* MARCO DORADO DIRECTO SOBRE LA FOTO */
+    border: 3px solid var(--gold); 
+    box-sizing: border-box; /* Garantiza que el marco quede justo en el borde de la imagen */
+    
+    /* Sombra dorada suave exterior */
+    box-shadow: 0 10px 30px rgba(184, 145, 44, 0.25);
+}
+
+.welcome-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.welcome-card:hover .welcome-photo {
+    transform: scale(1.03);
+}
+
+/* CAPA DE TEXTO SOBRE LA FOTO */
+.welcome-photo-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 25px 20px;
+    background: linear-gradient(to top, rgba(58, 27, 38, 0.9) 0%, rgba(58, 27, 38, 0.3) 50%, transparent 100%);
+    text-align: center;
+}
+
+.welcome-photo-overlay .welcome-name {
+    font-family: var(--font-script);
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    font-size: clamp(3.8rem, 12vw, 5.5rem);
+    line-height: 0.85;
+    font-weight: 700;
+}
+
+.welcome-photo-overlay .welcome-subtitle {
+    font-family: var(--font-display);
+    color: var(--gold-soft);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+    font-size: 1.35rem;
+    font-style: italic;
+    margin-top: 6px;
+}
+
+/* INDICADOR DE INTERACCIÓN */
+.touch-text {
+    margin-top: 10px;
+    color: var(--gold-soft);
+    font-size: .68rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    animation: bob 2.2s ease-in-out infinite;
+}
+
+@keyframes bob {
+    0%, 100% { transform: translateY(0); opacity: .65; }
+    50% { transform: translateY(5px); opacity: 1; }
+}
+
+/* =========================================================
+   NAVEGACIÓN
+   ========================================================= */
+
+.nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    background:rgba(251,233,238,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(184,145,44,.3);
+}
+
+.nav-brand{
+    font-family:var(--font-script);
+    font-size:2rem;
+    color:var(--rose-dark);
+}
+
+.nav-links{
+    display:flex;
+    gap:34px;
+    list-style:none;
+}
+
+.nav-links a{
+    position:relative;
+    padding-bottom:5px;
+    color:var(--plum-soft);
+    font-size:.75rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:1px;
+    background:var(--gold);
+    transition:width .3s ease;
+}
+
+.nav-links a:hover{
+    color:var(--rose-dark);
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    padding:6px;
+    border:0;
+    background:none;
+    cursor:pointer;
+}
+
+.nav-toggle span{
+    width:24px;
+    height:1.5px;
+    background:var(--rose-dark);
+}
+
+/* =========================================================
+   2. INICIO / HERO INTERIOR ("Una noche para recordar")
+   ========================================================= */
+
+.hero{
+    position:relative;
+    z-index:2;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:110px 24px 70px;
+    background:
+        radial-gradient(circle at center,rgba(255,255,255,.6),transparent 60%),
+        var(--blush);
+}
+
+.hero-eyebrow{
+    font-size:.75rem;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+}
+
+.hero-name-wrap{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.hero-line{
+    width:50px;
+    height:1px;
+    background:var(--gold-soft);
+}
+
+.hero-name{
+    font-family:var(--font-script);
+    font-size:clamp(4.2rem,11vw,7.2rem);
+    line-height:.9;
+    color:var(--rose-dark);
+    font-weight:700;
+}
+
+.hero-sub{
+    margin-top:20px;
+    font-family:var(--font-display);
+    font-size:1.65rem;
+    font-style:italic;
+    color:var(--plum-soft);
+}
+
+.hero-date{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:28px;
+    font-size:.76rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+}
+
+.hero-date span{
+    width:42px;
+    height:1px;
+    background:var(--gold);
+}
+
+.hero-ornament{
+    margin-top:30px;
+    color:var(--gold);
+    font-family:var(--font-display);
+}
+
+/* =========================================================
+   ESTRUCTURA GENERAL DE SECCIONES
+   ========================================================= */
+
+.section{
+    position:relative;
+    z-index:2;
+    padding:82px 0 78px;
+}
+
+.section:first-of-type{
+    padding-top:76px;
+}
+
+.section-alt{
+    background:var(--cream);
+}
+
+.section-head{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-eyebrow{
+    font-size:.73rem;
+    letter-spacing:.30em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:12px;
+}
+
+.section-title{
+    font-family:var(--font-display);
+    font-size:clamp(2.4rem,5vw,3.4rem);
+    line-height:1;
+    font-weight:500;
+    color:var(--rose-dark);
+}
+
+.section-ornament{
+    margin-top:17px;
+    color:var(--gold);
+}
+
+/* =========================================================
+   ANIMACIONES DE APARICIÓN AL HACER SCROLL
+   ========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.no-js .reveal{
+    opacity:1;
+    transform:none;
+}
+
+/* =========================================================
+   3. MENSAJE DE BIENVENIDA (Tarjeta estilo Pergamino/Imagen)
+   ========================================================= */
+
+.invitation-frame{
+    position:relative;
+    max-width:700px;
+    margin:0 auto;
+    padding:52px 58px;
+    text-align:center;
+    background: 
+        radial-gradient(circle at 50% 0%, rgba(232, 210, 160, 0.22), transparent 50%),
+        linear-gradient(145deg, #ffffff 0%, #fffaf6 50%, #fbe9ee 100%);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 
+        0 20px 50px rgba(122, 39, 64, 0.14),
+        0 5px 18px rgba(184, 145, 44, 0.10),
+        inset 0 0 20px rgba(184, 145, 44, 0.08);
+    overflow: hidden;
+}
+
+.invitation-frame::before{
+    content:"";
+    position:absolute;
+    inset:11px;
+    border:1px dashed var(--gold);
+    border-radius:8px;
+    pointer-events:none;
+}
+
+.invitation-eyebrow{
+    position:relative;
+    z-index:1;
+    font-size:.7rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:20px;
+}
+
+.ornament-line{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:min(250px,70%);
+    margin:0 auto 25px;
+}
+
+.ornament-line span{
+    height:1px;
+    flex:1;
+    background:var(--gold-soft);
+}
+
+.ornament-line b{
+    color:var(--gold);
+    font-family:var(--font-display);
+    font-weight:400;
+}
+
+.ornament-line.bottom{
+    margin:25px auto 0;
+}
+
+.invitation-text{
+    position:relative;
+    z-index:1;
+    max-width:610px;
+    margin:0 auto;
+    font-family:var(--font-display);
+    font-size:1.35rem;
+    line-height:1.85;
+    font-style:italic;
+    color:var(--plum-soft);
+}
+
+.invitation-text strong{
+    color:var(--rose-dark);
+    font-style:normal;
+    font-weight:600;
+}
+
+.frame-flower{
+    position:absolute;
+    z-index:3;
+    width:35px;
+    height:35px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--rose);
+    font-size:2rem;
+    font-family:serif;
+    line-height:1;
+    text-shadow:0 2px 8px rgba(178, 58, 92, 0.3);
+    animation:bloomSway 5s ease-in-out infinite;
+}
+
+.flower-tl{
+    top:-18px;
+    left:-18px;
+}
+
+.flower-tr{
+    top:-18px;
+    right:-18px;
+    animation-delay:1s;
+}
+
+.flower-bl{
+    bottom:-18px;
+    left:-18px;
+    animation-delay:2s;
+}
+
+.flower-br{
+    bottom:-18px;
+    right:-18px;
+    animation-delay:3s;
+}
+
+@keyframes bloomSway{
+    0%,100%{transform:scale(.9) rotate(-5deg)}
+    50%{transform:scale(1.08) rotate(5deg)}
+}
+
+/* =========================================================
+   4. FOTO PRINCIPAL (Tarjeta Retrato de Lujo)
+   ========================================================= */
+
+.showcase{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:center;
+    padding:5px 24px 105px;
+}
+
+.showcase-frame{
+    position:relative;
+    width:min(88vw,440px);
+    padding:18px;
+    background: linear-gradient(135deg, #ffffff 0%, #fffaf6 100%);
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    box-shadow: 
+        0 25px 50px rgba(122, 39, 64, 0.22),
+        0 0 20px rgba(184, 145, 44, 0.2);
+}
+
+.showcase-frame img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border-radius: 8px;
+    border: 1px solid var(--gold-soft);
+}
+
+.showcase-corner{
+    position:absolute;
+    width:23px;
+    height:23px;
+    border:1.5px solid var(--gold);
+    z-index:2;
+}
+
+.showcase-corner.tl{
+    top:6px;
+    left:6px;
+    border-right:0;
+    border-bottom:0;
+}
+
+.showcase-corner.tr{
+    top:6px;
+    right:6px;
+    border-left:0;
+    border-bottom:0;
+}
+
+.showcase-corner.bl{
+    bottom:6px;
+    left:6px;
+    border-right:0;
+    border-top:0;
+}
+
+.showcase-corner.br{
+    bottom:6px;
+    right:6px;
+    border-left:0;
+    border-top:0;
+}
+
+.showcase-caption{
+    text-align:center;
+    margin-top:15px;
+    padding: 12px 10px;
+    background: rgba(251, 233, 238, 0.65);
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    border: 1px solid rgba(184, 145, 44, 0.3);
+}
+
+.showcase-name{
+    display:block;
+    font-family:var(--font-script);
+    font-size:2.8rem;
+    line-height:1;
+    color:var(--rose-dark);
+}
+
+.showcase-sub{
+    display:block;
+    margin-top:7px;
+    font-size:.68rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--plum-soft);
+}
+
+/* =========================================================
+   CUENTA REGRESIVA FLOTANTE
+   ========================================================= */
+
+.countdown-follower{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:90;
+    min-width:190px;
+    padding:12px 15px 13px;
+    border:1.5px solid var(--gold);
+    border-radius:12px;
+    background:rgba(255,250,246,.95);
+    backdrop-filter:blur(10px);
+    box-shadow:0 12px 35px rgba(122,39,64,.18);
+    opacity:0;
+    transform:translateY(15px) scale(.96);
+    pointer-events:none;
+    transition:opacity .35s ease,transform .35s ease;
+}
+
+.countdown-follower.visible{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.follower-label{
+    margin-bottom:5px;
+    color:var(--gold);
+    font-size:.58rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    text-align:center;
+}
+
+.follower-time{
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:5px;
+    color:var(--rose-dark);
+}
+
+.follower-time span{
+    display:flex;
+    align-items:baseline;
+    gap:2px;
+}
+
+.follower-time b{
+    font-family:var(--font-display);
+    font-size:1.55rem;
+    line-height:1;
+    font-weight:600;
+}
+
+.follower-time small{
+    font-size:.54rem;
+    color:var(--plum-soft);
+    text-transform:uppercase;
+}
+
+.follower-time i{
+    color:var(--gold);
+    font-style:normal;
+    font-family:var(--font-display);
+}
+
+/* =========================================================
+   5. DETALLES DEL EVENTO
+   ========================================================= */
+
+.details-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(260px,320px));
+    justify-content:center;
+    gap:30px;
+    max-width:760px;
+    margin:0 auto;
+}
+
+.detail-card{
+    min-height:235px;
+    padding:35px 22px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background: 
+        radial-gradient(circle at 100% 0%, rgba(232, 210, 160, 0.25), transparent 40%),
+        linear-gradient(135deg, #ffffff 0%, #fbe9ee 100%);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 
+        0 15px 35px rgba(122, 39, 64, 0.10),
+        0 5px 15px rgba(184, 145, 44, 0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.detail-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 
+        0 20px 45px rgba(122, 39, 64, 0.18),
+        0 8px 25px rgba(184, 145, 44, 0.20);
+}
+
+.detail-icon{
+    height:38px;
+    margin-bottom:13px;
+    color:var(--gold);
+    font-family:var(--font-display);
+    font-size:2rem;
+    line-height:1;
+}
+
+.detail-title{
+    margin-bottom:10px;
+    font-family:var(--font-display);
+    font-size:1.4rem;
+    color:var(--rose-dark);
+}
+
+.detail-text{
+    max-width:250px;
+    font-size:.88rem;
+    line-height:1.7;
+    color:var(--plum-soft);
+}
+
+.map-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:20px;
+    padding:9px 18px;
+    border:1px solid var(--gold);
+    border-radius:22px;
+    background:linear-gradient(135deg, var(--rose-dark), var(--rose));
+    color:var(--cream);
+    font-size:.67rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    box-shadow: 0 6px 15px rgba(122,39,64,.18);
+    transition:background .25s ease,transform .25s ease,box-shadow .25s ease;
+}
+
+.map-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(122,39,64,.28);
+}
+
+/* =========================================================
+   6. SECCIÓN FAMILIA / MENSAJE FINAL
+   ========================================================= */
+
+.final-frame{
+    max-width:680px;
+    background: 
+        radial-gradient(circle at 0% 100%, rgba(178, 58, 92, 0.12), transparent 40%),
+        linear-gradient(135deg, #ffffff 0%, #fffaf6 60%, #fbe9ee 100%);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 
+        0 20px 50px rgba(122, 39, 64, 0.15),
+        inset 0 0 25px rgba(184, 145, 44, 0.10);
+}
+
+.family-title{
+    position:relative;
+    z-index:1;
+    margin-bottom:18px;
+    font-family:var(--font-display);
+    font-size:2.5rem;
+    font-weight:500;
+    color:var(--rose-dark);
+}
+
+.family-signature{
+    position:relative;
+    z-index:1;
+    margin-top:22px;
+    font-family:var(--font-display);
+    font-size:1.1rem;
+    font-style:italic;
+    font-weight:600;
+    color:var(--rose-dark);
+}
+
+/* =========================================================
+   7. FOOTER / COMENTARIO FINAL
+   ========================================================= */
+
+.footer{
+    position:relative;
+    z-index:2;
+    padding:42px 24px 40px;
+    text-align:center;
+    color:var(--plum-soft);
+    font-size:.76rem;
+    letter-spacing:.08em;
+}
+
+.footer .nav-brand{
+    display:block;
+    margin-bottom:8px;
+}
+
+.footer-ornament{
+    margin-top:18px;
+    color:var(--gold);
+}
+
+/* =========================================================
+   DISEÑO RESPONSIVO (Móviles y Tablets)
+   ========================================================= */
+
+@media (max-width:760px){
+
+    .container{
+        padding:0 22px;
+    }
+
+    .nav{
+        padding:16px 20px;
+    }
+
+    .nav-links{
+        position:fixed;
+        top:62px;
+        right:0;
+        width:min(75vw,300px);
+        height:calc(100vh - 62px);
+        padding:38px 30px;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:25px;
+        background:var(--cream);
+        box-shadow:-10px 0 30px rgba(122,39,64,.12);
+        transform:translateX(100%);
+        transition:transform .35s ease;
+    }
+
+    .nav-links.open{
+        transform:translateX(0);
+    }
+
+    .nav-toggle{
+        display:flex;
+    }
+
+    .hero{
+        min-height:92vh;
+        padding:100px 20px 65px;
+    }
+
+    .hero-line{
+        width:25px;
+    }
+
+    .section{
+        padding:70px 0 65px;
+    }
+
+    .invitation-frame{
+        max-width:620px;
+        padding:42px 28px;
+    }
+
+    .invitation-text{
+        font-size:1.18rem;
+        line-height:1.85;
+    }
+
+    .details-grid{
+        grid-template-columns:minmax(0,1fr);
+        max-width:420px;
+        gap:20px;
+    }
+
+    .detail-card{
+        min-height:210px;
+    }
+
+    .welcome-card{
+        min-height:auto;
+        padding:35px 22px 30px;
+    }
+
+    .welcome-photo-wrap{
+        height: 320px;
+    }
+
+    .countdown-follower{
+        right:12px;
+        bottom:12px;
+        min-width:165px;
+        padding:10px 11px;
+    }
+
+    .follower-time b{
+        font-size:1.32rem;
+    }
+}
+/* =========================================================
+   CONTROLES DE AUDIO EN LA NAVEGACIÓN (ESTILO XV AÑOS)
+   ========================================================= */
+
+.nav-audio-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+    margin-right: 22px;
+    padding: 4px 12px;
+    background: rgba(255, 250, 246, 0.6);
+    border: 1px solid var(--gold-soft);
+    border-radius: 25px;
+    box-shadow: inset 0 0 8px rgba(184, 145, 44, 0.08);
+}
+
+.audio-btn {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    background: radial-gradient(circle at 30% 30%, #d45d79, var(--rose-dark));
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(122, 39, 64, 0.25), 0 0 6px rgba(184, 145, 44, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.audio-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(122, 39, 64, 0.35), 0 0 10px rgba(184, 145, 44, 0.5);
+    border-color: #fff;
+}
+
+/* Animación sutil de pulso al sonar la música */
+.audio-btn.playing {
+    animation: musicPulse 2s infinite ease-in-out;
+}
+
+@keyframes musicPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(178, 58, 92, 0.4), 0 0 6px rgba(184, 145, 44, 0.3);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(178, 58, 92, 0), 0 0 12px rgba(184, 145, 44, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(178, 58, 92, 0), 0 0 6px rgba(184, 145, 44, 0.3);
+    }
+}
+
+.audio-icon {
+    font-size: 0.72rem;
+    line-height: 1;
+    margin-left: 1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Deslizador de volumen elegante */
+.volume-slider-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 65px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--gold-soft), var(--blush-deep));
+    outline: none;
+    cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f2d78a 0%, var(--gold) 100%);
+    border: 1px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(122, 39, 64, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f2d78a 0%, var(--gold) 100%);
+    border: 1px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(122, 39, 64, 0.3);
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 760px) {
+    .nav-audio-control {
+        margin-right: 8px;
+        padding: 3px 8px;
+        gap: 8px;
+    }
+
+    .audio-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .volume-slider {
+        width: 45px;
+    }
+}
+
+/* =========================================================
+   AJUSTES RESPONSIVOS PARA CELULARES
+   ========================================================= */
+@media (max-width: 460px) {
+
+    .welcome-screen {
+        padding: 12px;
+    }
+
+    .welcome-card {
+        width: 100%;
+        max-width: 380px;
+        padding: 0;
+        border: none !important;
+        background: transparent !important;
+    }
+
+    .welcome-photo-wrap {
+        width: 100%;
+        height: 480px; /* Tamaño amplio en celular */
+        border: 3px solid var(--gold);
+    }
+
+    .welcome-photo-overlay {
+        padding: 20px 12px;
+    }
+
+    .welcome-photo-overlay .welcome-name {
+        font-size: 3.8rem;
+    }
+
+    .welcome-photo-overlay .welcome-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .touch-text {
+        font-size: 0.62rem;
+        margin-top: 8px;
+    }
+    
+}
+
+@media (prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+    }
+}/* ELIMINAR CUADRO AZUL/GRIS DE ENFOQUE Y SELECCIÓN TÁCTIL EN CELULARES */
+button, 
+a, 
+input, 
+select, 
+textarea,
+.welcome-card,
+.open-button,
+[role="button"] {
+    -webkit-tap-highlight-color: transparent; /* Quita el recuadro azul al tocar en iOS/Android */
+    outline: none !important;                /* Quita la línea de enfoque por defecto */
+}
+
+/* Evita que vuelva a aparecer la línea azul al hacer foco/clic */
+button:focus, 
+button:active, 
+a:focus, 
+a:active,
+input:focus,
+input:active {
+    outline: none !important;
+    box-shadow: none; /* Elimina sombras azules por defecto de algunos navegadores */
+}
+audio {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+}

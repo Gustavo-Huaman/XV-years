@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fbe9ee">
+    <title>-- Mis XV Años --</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body class="cover-active">
+
+    <!-- ARCHIVO DE AUDIO -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Pétalos -->
+    <div class="petals" id="petals" aria-hidden="true"></div>
+
+    <!-- =========================================================
+         PORTADA / CARTA DE BIENVENIDA (CON FOTO INTERACTIVA)
+         ========================================================= -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-card" id="welcomeCard" role="button" tabindex="0" aria-label="Abrir invitación">
+
+            <!-- FOTO PRINCIPAL DE PORTADA -->
+            <div class="welcome-photo-wrap">
+                <img src="imagenes/Image_3d3j3f3d3j3f3d3j.jpg" alt="Foto de portada de Zaíra Belén" class="welcome-photo">
+                <div class="welcome-photo-overlay">
+                    
+                    <p class="touch-text">Toca para abrir la invitación</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL
+         ========================================================= -->
+    <main id="mainContent">
+
+        <!-- NAVEGACIÓN CON CONTROL DE MÚSICA -->
+        <nav class="nav" id="nav">
+            <a href="#inicio" class="nav-brand">XV</a>
+
+            <!-- CONTROLADOR DE AUDIO EN LA BARRA DE NAVEGACIÓN -->
+            <div class="nav-audio-control">
+                <button id="musicToggle" class="audio-btn" type="button" aria-label="Reproducir o pausar música">
+                    <span id="musicIcon" class="audio-icon">▶</span>
+                </button>
+                <div class="volume-slider-wrap">
+                    <input type="range" id="volumeControl" class="volume-slider" min="0" max="1" step="0.05" value="0.7" aria-label="Control de volumen">
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#detalles">Detalles</a></li>
+                <li><a href="#familia">Mensaje</a></li>
+            </ul>
+        </nav>
+
+        <!-- HERO INTERIOR -->
+        <section class="hero" id="inicio">
+            <p class="hero-eyebrow">Una noche para recordar</p>
+
+            <div class="hero-name-wrap">
+                <span class="hero-line"></span>
+                <h2 class="hero-name">Zaíra Belén</h2>
+                <span class="hero-line"></span>
+            </div>
+
+            <p class="hero-sub">Mis quince años</p>
+
+            <p class="hero-date">
+                <span></span>
+                10 de octubre, 2026
+                <span></span>
+            </p>
+
+            <div class="hero-ornament">✦</div>
+        </section>
+
+        <!-- MENSAJE DE BIENVENIDA -->
+        <section class="section">
+            <div class="container">
+                <div class="invitation-frame reveal">
+                    <div class="frame-flower flower-tl">✿</div>
+                    <div class="frame-flower flower-tr">✿</div>
+                    <div class="frame-flower flower-bl">✿</div>
+                    <div class="frame-flower flower-br">✿</div>
+
+                    <p class="invitation-eyebrow">Con mucha ilusión</p>
+
+                    <div class="ornament-line">
+                        <span></span><b>♡</b><span></span>
+                    </div>
+
+                    <p class="invitation-text">
+                        Hoy cierro un capítulo de niña para abrir uno nuevo.
+                        Quiero compartir este momento tan especial junto a las
+                        personas que más quiero, por eso <strong>te invito</strong>
+                        a acompañarme a celebrar mis XV años con una noche llena
+                        de música, baile y buenos recuerdos.
+                    </p>
+
+                    <div class="ornament-line bottom">
+                        <span></span><b>✦</b><span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOTO PRINCIPAL DEL CONTENIDO -->
+        <section class="showcase">
+            <div class="showcase-frame reveal">
+                <span class="showcase-corner tl"></span>
+                <span class="showcase-corner tr"></span>
+                <span class="showcase-corner bl"></span>
+                <span class="showcase-corner br"></span>
+
+                <img src="imagenes/Image 22 sept 2026, 23_50_57.png" alt="Foto principal de Zaíra Belén">
+
+                <div class="showcase-caption">
+                    <span class="showcase-name">Zaíra Belén</span>
+                    <span class="showcase-sub">Mis quince años</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CUENTA REGRESIVA FLOTANTE -->
+        <div class="countdown-follower" id="countdownFollower" aria-label="Cuenta regresiva">
+            <div class="follower-label">Faltan</div>
+            <div class="follower-time">
+                <span><b id="fd-days">00</b><small>d</small></span><i>:</i>
+                <span><b id="fd-hours">00</b><small>h</small></span><i>:</i>
+                <span><b id="fd-min">00</b><small>m</small></span><i>:</i>
+                <span><b id="fd-sec">00</b><small>s</small></span>
+            </div>
+        </div>
+
+        <!-- DETALLES -->
+        <section class="section section-alt" id="detalles">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="section-eyebrow">Información</p>
+                    <h2 class="section-title">Detalles del evento</h2>
+                    <div class="section-ornament">✦</div>
+                </div>
+
+                <div class="details-grid reveal">
+
+                    <div class="detail-card">
+                        <div class="detail-icon">⌖</div>
+                        <div class="detail-title">Lugar</div>
+                        <div class="detail-text">
+                            Salón de Gala Estefania<br>
+                            Pasando el Puente de Piedra,<br>
+                            Maygasbamba, Bambamarca
+                        </div>
+                        <a class="map-button" href="https://maps.app.goo.gl/gF2TegPyv7uLmszS9" target="_blank" rel="noopener noreferrer">Ver ubicación</a>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-icon">◷</div>
+                        <div class="detail-title">Horario</div>
+                        <div class="detail-text">
+                            Misa: 11:00 am<br>
+                            Iglesia de Bambamarca<br><br>
+                            Recepción: 3:00 pm<br>
+                            Local de celebración
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PADRES / PADRINOS / MENSAJE FINAL -->
+        <section class="section" id="familia">
+            <div class="container">
+                <div class="invitation-frame final-frame reveal">
+                    <div class="frame-flower flower-tl">✿</div>
+                    <div class="frame-flower flower-tr">✿</div>
+                    <div class="frame-flower flower-bl">✿</div>
+                    <div class="frame-flower flower-br">✿</div>
+
+                    <p class="invitation-eyebrow">Con mucho amor</p>
+
+                    <h2 class="family-title">Un momento inolvidable</h2>
+
+                    <div class="ornament-line">
+                        <span></span><b>♡</b><span></span>
+                    </div>
+
+                    <p class="invitation-text">
+                        Agradecemos a nuestros familiares y amigos por ser parte
+                        de este camino tan hermoso. Su apoyo y cariño hacen que
+                        esta celebración sea inolvidable para nuestra querida
+                        hija <strong>Zaíra Belén</strong>.
+                    </p>
+
+                    <p class="family-signature">
+                        — Con afecto, Padres y Familia —
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer class="footer">
+            <span class="nav-brand">Cargando la mejor noche del año... (Faltas tú).</span>
+            <p>Hay momentos en la vida que son inolvidables, compartirlos con quienes más amamos los hace eternos.</p>
+            <div class="footer-ornament">✦</div>
+        </footer>
+
+    </main>
+
+    <script src="Script.js"></script>
+</body>
+</html>
