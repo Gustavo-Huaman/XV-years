@@ -1348,3 +1348,166 @@ audio {
     outline: none !important;
     -webkit-tap-highlight-color: transparent;
 }
+/* =====================================================
+   BOTÓN DE MUESTRA DE CARIÑO Y MODAL FLOTANTE
+   ===================================================== */
+.open-gift-btn {
+    background: linear-gradient(135deg, #742284, #9c27b0);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(116, 34, 132, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+}
+
+.open-gift-btn:active {
+    transform: scale(0.96);
+}
+
+/* Fondo oscuro transparente del modal */
+.gift-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(4px); /* Efecto difuminado de fondo */
+}
+
+/* Ventana blanca emergente */
+.gift-modal-content {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: popupAnimation 0.3s ease-out;
+}
+
+@keyframes popupAnimation {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Botón 'X' para cerrar */
+.close-modal-btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.close-modal-btn:hover {
+    color: #333;
+}
+
+/* Estilos internos de Yape */
+.gift-icon {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.gift-modal-content h2 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.gift-modal-content p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+.yape-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.qr-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #742284;
+    padding: 5px;
+    background: #fff;
+}
+
+.qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.yape-label {
+    background: #742284;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.phone-number {
+    font-size: 1.3rem !important;
+    font-weight: bold;
+    color: #333 !important;
+    margin: 4px 0 !important;
+}
+
+.holder-name {
+    font-size: 0.8rem !important;
+    color: #777 !important;
+    margin-bottom: 10px !important;
+}
+
+.copy-btn {
+    background: #742284;
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+}
+
+.copy-btn:active {
+    background: #5a1a67;
+}

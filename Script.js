@@ -244,5 +244,69 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(schedulePetal, frequency);
     }
     schedulePetal();
+    
 
 });
+function copyYapeNumber() {
+    const numberText = document.getElementById('yapeNumber').innerText;
+    
+    navigator.clipboard.writeText(numberText).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = '¡Copiado! ✓';
+        btn.style.background = '#2e7d32'; // Cambia a verde al copiar
+        
+        setTimeout(() => {
+            btn.innerText = '📋 Copiar número';
+            btn.style.background = '#742284';
+        }, 2000);
+    }).catch(err => {
+        console.error('Error al copiar: ', err);
+    });
+}
+// =====================================================
+// CONTROL DEL MODAL DE MUESTRA DE CARIÑO / YAPE
+// =====================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const openGiftBtn = document.getElementById('openGiftBtn');
+    const closeGiftBtn = document.getElementById('closeGiftBtn');
+    const giftModal = document.getElementById('giftModal');
+
+    // Abrir modal
+    if (openGiftBtn && giftModal) {
+        openGiftBtn.addEventListener('click', () => {
+            giftModal.style.display = 'flex';
+        });
+    }
+
+    // Cerrar con la 'X'
+    if (closeGiftBtn && giftModal) {
+        closeGiftBtn.addEventListener('click', () => {
+            giftModal.style.display = 'none';
+        });
+    }
+
+    // Cerrar al hacer clic fuera del contenido blanco
+    window.addEventListener('click', (e) => {
+        if (e.target === giftModal) {
+            giftModal.style.display = 'none';
+        }
+    });
+});
+
+// Función para copiar el número de Yape
+function copyYapeNumber() {
+    const numberText = document.getElementById('yapeNumber').innerText;
+    
+    navigator.clipboard.writeText(numberText).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = '¡Copiado! ✓';
+        btn.style.background = '#2e7d32';
+        
+        setTimeout(() => {
+            btn.innerText = '📋 Copiar número';
+            btn.style.background = '#742284';
+        }, 2000);
+    }).catch(err => {
+        console.error('Error al copiar: ', err);
+    });
+}

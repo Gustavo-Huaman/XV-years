@@ -220,6 +220,41 @@
             </div>
         </section>
 
+<!-- BOTÓN PRINCIPAL -->
+<div style="text-align: center; margin: 30px 0;">
+    <button class="open-gift-btn" id="openGiftBtn">
+        🎁 Muestra de Cariño
+    </button>
+</div>
+
+<!-- VENTANA MODAL (OCULTA POR DEFECTO) -->
+<div class="gift-modal" id="giftModal">
+    <div class="gift-modal-content">
+        <!-- Botón para cerrar -->
+        <span class="close-modal-btn" id="closeGiftBtn">&times;</span>
+        
+        <div class="gift-icon">🎁</div>
+        <h2>Muestra de Cariño</h2>
+        <p>Tu presencia es nuestro mejor regalo. Si deseas hacernos un presente de manera virtual, te dejamos los datos:</p>
+        
+        <div class="yape-container">
+            <div class="qr-wrapper">
+                <img src="imagenes/Image 2026-09-23 at 00.47.11.jpeg" alt="Código QR Yape" class="qr-image">
+            </div>
+
+            <div class="yape-info">
+                <span class="yape-label">YAPE</span>
+                <p class="phone-number" id="yapeNumber">952 803 698</p>
+                <p class="holder-name">A nombre de: Juana Luna</p>
+                
+                <button class="copy-btn" onclick="copyYapeNumber()">
+                    📋 Copiar número
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
         <!-- PIE DE PÁGINA -->
         <footer class="footer">
             <span class="nav-brand">Cargando la mejor noche del año... (Faltas tú).</span>
